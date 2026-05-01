@@ -1,14 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">       
+    <title>CineRank</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='logo.svg') }}">
 </head>
+
 <body>
-    <h1>Wellcome to Flask Website</h1>
-    <h2>Connect Flask With Html</h2>
-    <h2>Connect Html with Css in Flask </h2>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='logo.svg') }}" alt="Logo" width="10%">
+            </div>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="#">Movies</a></li>
+                <li><a href="#">Anime</a></li>
+                <li><a href="#">Ranking</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="box">
+        {% for movie in movies %}
+        <div class="moviesbox">
+            <h2>{{ movie.title }}</h2>
+            <p>⭐ Rating: {{ movie.rating }}</p>
+            <p>🔥 Power Score: {{ movie.power }}</p>
+
+            {% if movie.rating > 8 %}
+            <p class="top-rated">⭐ Top Rated</p>
+            {% endif %}
+            {% for genre, value in movie.genres.items() %}
+            <div class="genre">
+                <span>{{ genre }}</span>
+
+                <div class="bar">
+                    <div class="fill" style="width: {{ value }}%;"></div>
+                </div>
+
+                <span>{{ value }}%</span>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+
 </body>
+
 </html>
