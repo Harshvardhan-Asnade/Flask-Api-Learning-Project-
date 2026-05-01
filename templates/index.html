@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CineRank</title>
+    <title>Cinerix</title>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='logo.svg') }}">
@@ -19,7 +19,7 @@
             </div>
             <ul class="nav-links">
                 <li><a href="{{ url_for('home') }}">Home</a></li>
-                <li><a href="#">Movies</a></li>
+                <li><a href="#">Moßvies</a></li>
                 <li><a href="#">Anime</a></li>
                 <li><a href="#">Ranking</a></li>
             </ul>
@@ -30,30 +30,32 @@
             <input type="text" name="search" placeholder="Search Movies">
             <button type="submit">Search</button>
         </form>
-        {% for movie in movies %}
-        <a href="/movies/{{movie.id}}" class="card-link">
-        <div class="moviesbox">
-            <h2>{{ movie.title }}</h2>
-            <p>⭐ Rating: {{ movie.rating }}</p>
-            <p>🔥 Power Score: {{ movie.power }}</p>
 
-            {% if movie.rating > 8 %}
-            <p class="top-rated">⭐ Top Rated</p>
-            {% endif %}
-            {% for genre, value in movie.genres.items() %}
-            <div class="genre">
-                <span>{{ genre }}</span>
+        <a href="/movies/{{movie/id}}">
+            {% for movie in movies %}
+            <div class="moviesbox">
 
-                <div class="bar">
-                    <div class="fill" style="width: {{ value }}%;"></div>
-                </div>
+                <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" width="150">
 
-                <span>{{ value }}%</span>
+                <h2>{{ movie.title }}</h2>
+                <p>⭐ Rating: {{ movie.vote_average }}</p>
+                <p>{{ movie.overview }}</p>
+                <p>{{ movie.genre_ids }}</p>
+                <p>{{ movie.release_date }}</p>
+                <p>{{ movie.popularity }}</p>
+                <p>{{ movie.adult }}</p>
+                <p>{{ movie.video }}</p>
+                <p>{{ movie.id }}</p>
+                <p>{{movie.vote_count}}</p>
+
+
+                {% if movie.vote_average > 8 %}
+                <p class="top-rated">⭐ Top Rated</p>
+                {% endif %}
+
             </div>
             {% endfor %}
-        </div>
         </a>
-        {% endfor %}
     </div>
 
 </body>

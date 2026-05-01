@@ -8,17 +8,23 @@
     <link rel="icon" href="{{ url_for('static', filename='logo.svg') }}">
 </head>
 <body>
-    <h1>{{movie.title}}</h1>
-    <p>⭐ Rating: {{ movie.rating }}</p>
-    <p>🔥 Power Score: {{ movie.power }}</p>
-     <h3>Genres:</h3>
+     <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" width="150">
 
-    {% for genre, value in movie.genres.items() %}
+            <h2>{{ movie.title }}</h2>
+            <p>⭐ Rating: {{ movie.vote_average }}</p>
+            <p>{{ movie.overview }}</p>
+            <p>{{ movie.genre_ids }}</p>
+            <p>{{ movie.release_date }}</p>
+            <p>{{ movie.popularity }}</p>
+            <p>{{ movie.adult }}</p>
+            <p>{{ movie.video }}</p>
+            <p>{{ movie.id }}</p>
+            <p>{{movie.vote_count}}</p>
 
-        <p>{{ genre }} - {{ value }}%</p>
 
-    {% endfor %}
-
+            {% if movie.vote_average > 8 %}
+            <p class="top-rated">⭐ Top Rated</p>
+            {% endif %}
     <br>
 
     <a href="/">⬅ Back to Home</a>
