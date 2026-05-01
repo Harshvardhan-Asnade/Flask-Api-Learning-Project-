@@ -1,0 +1,15 @@
+*{
+    background-color: rgb(188, 255, 54);
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+}
+h1{
+    text-align: center;
+    text-decoration:wavy;
+    text-decoration: underline solid black;
+}
+h2 {
+    color: rgb(1, 1, 68);
+    text-align: left;
+     
+}
