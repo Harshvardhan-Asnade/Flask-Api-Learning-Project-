@@ -27,7 +27,7 @@ def home():
 def movie_detail(id):
     for movie in movies:
         if movie["id"]==id:
-            return render_template("detail.html",movie=movie)
+            return render_template("movie_detail.html",movie=movie)
     return "Movie Not Found"
 if __name__=='__main__':
     app.run(debug=True)

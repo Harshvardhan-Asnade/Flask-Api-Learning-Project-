@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{movie.title}}</title>
+     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='logo.svg') }}">
+</head>
+<body>
+    <h1>{{movie.title}}</h1>
+    <p>⭐ Rating: {{ movie.rating }}</p>
+    <p>🔥 Power Score: {{ movie.power }}</p>
+     <h3>Genres:</h3>
+
+    {% for genre, value in movie.genres.items() %}
+
+        <p>{{ genre }} - {{ value }}%</p>
+
+    {% endfor %}
+
+    <br>
+
+    <a href="/">⬅ Back to Home</a>
+</body>
+</html>
