@@ -26,7 +26,7 @@
         </nav>
     </header>
     <div class="box">
-        {% for movie in movies %}
+        {% for movie in movies.values() %}
         <a href="/movies/{{movie.id}}" class="card-link">
         <div class="moviesbox">
             <h2>{{ movie.title }}</h2>
